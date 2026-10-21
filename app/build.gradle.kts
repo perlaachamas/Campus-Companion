@@ -38,6 +38,17 @@ android {
 }
 
 dependencies {
+    // HTTP requests
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+
+// Convert JSON responses into Kotlin objects
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+// ViewModel and Compose integration
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+
+// Coroutines for asynchronous work
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

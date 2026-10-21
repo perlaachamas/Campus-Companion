@@ -47,6 +47,10 @@ import com.inci.campuscompanion.data.dataStore
 import com.inci.campuscompanion.model.Task
 import com.inci.campuscompanion.ui.MainViewModel
 import com.inci.campuscompanion.ui.theme.CampusCompanionTheme
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.inci.campuscompanion.ui.EventsScreen
+import com.inci.campuscompanion.ui.EventsViewModel
+import com.inci.campuscompanion.ui.EventsViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +68,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             val isDarkMode by viewModel.isDarkMode.collectAsStateWithLifecycle()
             val tasks by viewModel.tasks.collectAsStateWithLifecycle()
-
+            val eventsViewModel: EventsViewModel = viewModel(
+                factory = EventsViewModelFactory()
+            )
+            EventsScreen(viewModel = eventsViewModel)
             CampusCompanionTheme(darkTheme = isDarkMode) {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     TaskScreen(
